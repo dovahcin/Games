@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="corneredImageForList">
+        <item name="cornerSize">25dp</item>
+    </style>
+    <style name="roundImage">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="corneredScreenShot">
+        <item name="cornerSize">10dp</item>
+    </style>
+    <style name="cornerdBanner">
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+    <style name="ProgressBar">
+        <item name="colorAccent">@color/progressColor</item>
+    </style>
+
+</resources>

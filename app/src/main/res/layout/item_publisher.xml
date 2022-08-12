@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="publisher"
+            type="com.android.games.domain.Publisher" />
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/commonBlue"
+        android:text="@{publisher.name}"
+        android:textSize="@dimen/xlTextSize"
+        android:layout_marginEnd="@dimen/xlMargin"
+        tools:text="Ubisoft"/>
+
+</layout>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="details"
+            type="com.android.games.domain.GameDetails" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/cornerdBanner"
+                    tools:src="@drawable/responsecroped" />
+
+                <TextView
+                    android:id="@+id/titleEsrb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/xxlMargin"
+                    android:background="@color/bgesrb"
+                    android:text="@string/esrb"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/xxlTextSize"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/banner"
+                    app:layout_constraintEnd_toEndOf="@+id/textEsrb"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textEsrb" />
+
+                <TextView
+                    android:id="@+id/textEsrb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/xlMargin"
+                    android:paddingHorizontal="@dimen/mPadding"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xxlTextSize"
+                    android:text="@{details.esrb_rating.name}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/titleEsrb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Mature" />
+
+
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/xlMargin"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:textColor="@color/commonBlue"
+                    android:textSize="@dimen/xxlTextSize"
+                    android:text="@{details.name}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/banner"
+                    tools:text="Grand Theft Auto V" />
+
+
+                <TextView
+                    android:id="@+id/titleUpdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:text="@string/updated"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lTextSize"
+                    app:layout_constraintStart_toStartOf="@+id/textName"
+                    app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+                <TextView
+                    android:id="@+id/textUpdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/commonBlue"
+                    android:textSize="@dimen/lTextSize"
+                    android:text="@{details.updatedDate}"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/titleUpdated"
+                    app:layout_constraintStart_toEndOf="@+id/titleUpdated"
+                    app:layout_goneMarginStart="@dimen/lMargin"
+                    tools:text="2020.2.20" />
+
+                <TextView
+                    android:id="@+id/titleRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:text="@string/rating"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lTextSize"
+                    app:layout_constraintStart_toStartOf="@+id/titleUpdated"
+                    app:layout_constraintTop_toBottomOf="@+id/titleUpdated"
+                    app:layout_goneMarginStart="@dimen/lMargin" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/lMargin"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="@{details.ratedStar}"
+                    android:stepSize="0.1"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleRating"
+                    app:layout_constraintStart_toEndOf="@+id/titleRating"
+                    app:layout_constraintTop_toTopOf="@+id/titleRating"
+                    tools:rating="4.7" />
+
+                <TextView
+                    android:id="@+id/textRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/lMargin"
+                    android:textColor="@color/commonBlue"
+                    android:textSize="@dimen/lTextSize"
+                    android:text="@{details.ratedText}"
+                    app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+                    app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                    app:layout_constraintTop_toTopOf="@+id/ratingBar"
+                    app:layout_goneMarginStart="@dimen/lMargin"
+                    tools:text="(4.67/5)" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:text="@string/screenshots"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xlTextSize"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleRating" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerScreenShots"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xlMargin"
+                    android:layout_marginEnd="@dimen/xlMargin"
+                    android:orientation="horizontal"
+                    android:transitionName="image_small"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    tools:listitem="@layout/item_screenshot" />
+
+
+                <TextView
+                    android:id="@+id/titleDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:text="@string/about"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xlTextSize"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerScreenShots"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerScreenShots" />
+
+                <TextView
+                    android:id="@+id/textDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xlMargin"
+                    android:layout_marginEnd="@dimen/xlMargin"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lTextSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/titleDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/titleDesc"
+                    tools:text="@tools:sample/lorem" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:layout_marginEnd="@dimen/xlMargin"
+                    app:cardBackgroundColor="@color/cardColor"
+                    app:cardCornerRadius="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/textDesc">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/titleDevs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xxxlMargin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/xlTextSize"
+                            android:text="@string/developers" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerDevs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_developer" />
+
+
+                        <TextView
+                            android:id="@+id/titlePublishers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/xlTextSize"
+                            android:text="@string/publishers" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerPublishers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_publisher" />
+
+
+                        <TextView
+                            android:id="@+id/titleStores"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/xlTextSize"
+                            android:text="@string/stores" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerStores"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_store" />
+
+
+                        <TextView
+                            android:id="@+id/titlePlatforms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/xlTextSize"
+                            android:text="@string/platforms" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerPlatforms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/xlMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/xlMargin"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_platforms" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/titleTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxlMargin"
+                    android:text="@string/tags"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xlTextSize"
+                    app:layout_constraintStart_toStartOf="@+id/cardView"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTags"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xlMargin"
+                    android:layout_marginEnd="@dimen/xlMargin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/titleTags"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTags"
+                    tools:listitem="@layout/item_tags" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/ProgressBar" />
+
+    </FrameLayout>
+
+</layout>
